@@ -1,13 +1,19 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/index.js"
     }
   ],
   "functions": {
-    "api/index.js": {
+    "index.js": {
       "includeFiles": "node_modules/swagger-ui-dist/**"
     }
   }
