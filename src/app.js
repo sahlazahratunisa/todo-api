@@ -13,10 +13,11 @@ const app = express();
 app.use(logger);
 app.use(express.json());
  
-// Halaman utama ( / ) langsung menampilkan Swagger UI
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.get("/", (req, res) => {
+  res.json({ message: "Todo API is running" });
+});
  
-// (Opsional) Jika tetap ingin bisa diakses lewat /api-docs juga
+// Halaman dokumentasi interaktif tersedia di /api-docs
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  
 app.use("/api/auth", authRoutes);
